@@ -149,7 +149,7 @@ def login_user():
                     }}
                 )
                 session["username"] = login_user["username"]
-                # return redirect('/admin')
+                
                 return Response(
                     response=json.dumps({
                         "message": "Token Updated!"
@@ -203,7 +203,7 @@ def create_plant():
             "manfaat": request.form["manfaat"]
         }
         dbResponse = db.plants.insert_one(plant)
-        # return redirect('/api/v1/plants/logs')
+        
         return Response(
             response=json.dumps({
                 "message": "Plant Created",
@@ -239,7 +239,7 @@ def get_plants():
         # Convert to string
         for plant in data:
             plant["_id"] = str(plant["_id"])
-        # return render_template('listplant.html', dataplant=enumerate(data))
+        
         return Response(
             response=json.dumps(data),
             status=200,
